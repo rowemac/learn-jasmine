@@ -6,7 +6,7 @@ describe(`${User.name} Class`, () => {
     
     beforeEach(() => {
         model = new User();
-        console.log('Dylan');
+        console.log('Mac');
     });
     
     describe('default values', () => {
