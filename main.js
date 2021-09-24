@@ -1,22 +1,10 @@
-class User {
-    firstName;
-    lastName;
-    middleName;
+/* Unit Testing: It Test Challenge
+*
+*   1. Write a unit test for lastName and middleName to test its default values.
+*   2. Group all 3 unit tests with an appropriate describe.
+*/
 
-    constructor(data = {}) {
-        this.firstName = data.firstName || '';
-        this.lastName = data.lastName || '';
-        this.middleName = data.middleName;
-    }
-}
-
-// Test suite
-// Change this for a safer call
-// describe('User', () =>{
-
-// });
-
-// Goal is to write from a user-focus
+// Test Suite
 
 describe(`${User.name} Class`, () => {
     it('first name defaults to empty', () => {
