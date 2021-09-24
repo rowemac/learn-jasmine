@@ -1,24 +1,33 @@
-function insertDashes(str) {
-    // write code here
+class User {
+    firstName;
+    lastName;
+    middleName;
+
+    constructor(data = {}) {
+        this.firstName = data.firstName || '';
+        this.lastName = data.lastName || '';
+        this.middleName = data.middleName;
+    }
 }
 
+// Test suite
+// Change this for a safer call
+// describe('User', () =>{
 
+// });
 
-/**
-* Test Suite 
-*/
-describe('insertDashes()', () => {
-    it('insert dashes in between chars', () => {
+// Goal is to write from a user-focus
+
+describe(`${User.name} Class`, () => {
+    it('first name defaults to empty', () => {
         // arrange
-        const value = "aba caba";
-        
-        // act
-        const result = insertDashes(value);
+        const data = { firstName: null };
 
-        // log
-        console.log("result: ", result);
-        
+        // act
+        const model = new User(data); // standardize testing (use model instead of user)
+
         // assert
-        expect(result).toBe("a-b-a c-a-b-a");
+        expect(model.firstName).toBe('');
+
     });
 });
