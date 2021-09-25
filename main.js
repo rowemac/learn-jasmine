@@ -8,9 +8,20 @@
 // Test Suite 
 describe(`${User.name} Class`, () => {
     let model;
+    let mockUserService;
     
     beforeEach(() => {
-        model = new User();
+        mock = {
+            lastId: null,
+            user: {},
+            getUserById: async (id) => {
+                this.lastId = id;
+
+                return this.user;
+            }
+        };
+        const data = { firstName: 'Mac', middleName: 'Thomas', lastName: 'Rowe', id: 1 };
+        model = new User(data, mockUserService);
     });
     
     describe('default values', () => {
@@ -85,8 +96,15 @@ describe(`${User.name} Class`, () => {
             // assert
             expect(window.confirm).toHaveBeenCalledWith("Are you a testing god?");
         });
+    });
 
+    describe('getMyFullUserData', () => {
+        it('gets user data by id', () => {
+            // arrange
 
+            // act
 
+            // assert
+        });
     });
 });
