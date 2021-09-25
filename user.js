@@ -7,6 +7,8 @@ class User {
         this.firstName = data.firstName || '';
         this.lastName = data.lastName || '';
         this.middleName = data.middleName || '';
+        this.id = data.id;
+        this.userService = userService;
     }
 
     get fullName() {
@@ -15,6 +17,10 @@ class User {
         }
 
         return `${this.firstName} ${this.lastName}`;
+    }
+
+    async getMyFullUserData() {
+        return this.userService.getUserById(this.id); 
     }
 
     sayMyName() {
