@@ -11,10 +11,10 @@ describe(`${User.name} Class`, () => {
     let mockUserService;
     
     beforeEach(() => {
-        mock = {
+        mockUserService = {
             lastId: null,
             user: {},
-            getUserById: async (id) => {
+            getUserById(id) {
                 this.lastId = id;
 
                 return this.user;
@@ -24,22 +24,22 @@ describe(`${User.name} Class`, () => {
         model = new User(data, mockUserService);
     });
     
-    describe('default values', () => {
-        it('first name defaults to empty', () => {
-            // assert
-            expect(model.firstName).toBe('');
-        });
+    // describe('default values', () => {
+    //     it('first name defaults to empty', () => {
+    //         // assert
+    //         expect(model.firstName).toBe('');
+    //     });
     
-        it('last name defaults to empty', () => {
-            // assert
-            expect(model.lastName).toBe('');
-        });
+    //     it('last name defaults to empty', () => {
+    //         // assert
+    //         expect(model.lastName).toBe('');
+    //     });
     
-        it('middle name defaults to empty', () => {
-            // assert
-            expect(model.middleName).toBe('');
-        }); 
-    });
+    //     it('middle name defaults to empty', () => {
+    //         // assert
+    //         expect(model.middleName).toBe('');
+    //     }); 
+    // });
     
     describe('full name', () => {
         beforeEach(() => {
@@ -99,12 +99,15 @@ describe(`${User.name} Class`, () => {
     });
 
     describe('getMyFullUserData', () => {
-        it('gets user data by id', () => {
+        it('gets user data by id', async () => {
             // arrange
-
+            mockUserService.lastId = null;
+            mockUserService.user = new User({ firstName: "Marc", middleName: "Coding God", lastName: "Raye", id: 2 }
+            )
             // act
-
+            const result = await model.getMyFullUserData(); 
             // assert
+            expect(mockUserService.lastId).toBe(1);
         });
     });
 });
