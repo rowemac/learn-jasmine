@@ -57,4 +57,36 @@ describe(`${User.name} Class`, () => {
            expect(result).toBe(`${model.firstName} ${model.lastName}`);
         });
     });
+
+    describe('get code name', () => {
+        it('is a testing god when confirmed', () => {
+            // arrange
+            spyOn(window, 'confirm').and.returnValue(true);
+            // act 
+            const result = model.getCodeName();
+            // assert
+            expect(result).toBe('TESTING GOD!');
+        });
+
+        it('is a scrub when not doing testing', () => {
+            // arrange
+            spyOn(window, 'confirm').and.returnValue(false);
+            // act 
+            const result = model.getCodeName();
+            // assert
+            expect(result).toBe("Not worthy. Sorry.");
+        });
+
+        it('asks a user if they are a testing god', () => {
+            // arrange
+            spyOn(window, 'confirm').and.returnValue(true);
+            // act 
+            const result = model.getCodeName();
+            // assert
+            expect(window.confirm).toHaveBeenCalledWith("Are you a testing god?");
+        });
+
+
+
+    });
 });
